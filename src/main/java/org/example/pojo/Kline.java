@@ -70,19 +70,33 @@ public class Kline {
 
     }
 
+//    @Override
+//    public String toString() {
+//        return "Kline{" +
+//
+//                ", openTime=" + openTime +
+//                ", open=" + open +
+//                ", high=" + high +
+//                ", low=" + low +
+//                ", close=" + close +
+//                ", volume=" + volume +
+//                '}';
+//    }
+
+
     @Override
     public String toString() {
         return "Kline{" +
-                ", openTime=" + openTime +
+                "loadId='" + loadId + '\'' +
+                ", symbol='" + symbol + '\'' +
+                ", openTime='" + openTime + '\'' +
                 ", open=" + open +
                 ", high=" + high +
                 ", low=" + low +
                 ", close=" + close +
                 ", volume=" + volume +
+                ", closeTime='" + closeTime + '\'' +
                 '}';
     }
-
-
-
 }
 

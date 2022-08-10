@@ -1,5 +1,7 @@
 package org.example.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import org.example.pojo.Kline;
 import org.example.pojo.MoneyType;
 import org.example.pojo.RawKline;
 
@@ -17,6 +19,8 @@ public interface LoadService {
 
     void loadAllAsync(Long startTime, Long endTime, String loadId);
 
+    //TODO
+    List<Kline> loadRedis(String symbol, Long startTime, Long endTime, String loadId, int frequency) throws JsonProcessingException;
 
-
+    int add(int a, int b);
 }

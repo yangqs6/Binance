@@ -89,9 +89,6 @@ public class RawKline {
         this.volume = part[5];
 
         this.closeTime = Long.valueOf(part[6]);
-
-
-
         this.quoteAssetVolume = part[7];
         this.numOfTrades = Integer.parseInt(part[8]);
         this.buyBaseVolume = part[9];
