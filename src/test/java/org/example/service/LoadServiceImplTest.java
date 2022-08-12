@@ -16,20 +16,24 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.spy;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = CalculateService.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class LoadServiceImplTest {
 
 
-    @Spy
-    private LoadService loadService = new LoadServiceImpl() ;
+//    @Spy
+//    private LoadService loadService = new LoadServiceImpl() ;
 
-    @BeforeAll
-    void printStart(){
-        System.out.println("Start to test ========");
+    @Autowired
+    private LoadService loadService;
 
-        MockitoAnnotations.openMocks(this);
-    }
+
+//    @BeforeAll
+//    void printStart(){
+//        System.out.println("Start to test ========");
+//
+//        MockitoAnnotations.openMocks(this);
+//    }
 
 
     //1523577600000/1523664000000
@@ -37,8 +41,8 @@ class LoadServiceImplTest {
     void Load() {
 //        LoadService loadService = spy(new LoadServiceImpl());
         String loadId = "e2501050-5298-4bbf-a8e2-9308aef0449d";
-        LoadService ls = spy(loadService);
-        System.out.println(loadService);
+//        LoadService ls = spy(loadService);
+//        System.out.println(loadService);
         String result = loadService.load(MoneyType.valueOf("BTC"),1523577600000L,
                 1523664000000L,loadId);
         System.out.println(result);
