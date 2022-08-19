@@ -4,29 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="535b53cf-fe4a-4929-a320-46dc60d4548f" name="Changes" comment="before ut">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/import.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/controller/ControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/mapper/KlineMapperTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/mapper/LoadMapperTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/mapper/TransferMapperTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/service/CalculateServiceImplTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/service/RedisServiceImplTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/service/TransferServiceImplTest.java" afterDir="false" />
+    <list default="true" id="535b53cf-fe4a-4929-a320-46dc60d4548f" name="Changes" comment="8-19 jenkins test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DemoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DemoApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/CalculatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/CalculatorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/pojo/Kline.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/pojo/Kline.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/CalculateServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/CalculateServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/LoadService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/LoadService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/LoadServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/LoadServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/RedisServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/RedisServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/TransferService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/TransferService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/TransferServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/TransferServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/service/LoadServiceImplMockTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/service/LoadServiceImplMockTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/example/service/LoadServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/service/LoadServiceImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -124,7 +104,23 @@
       <recent name="org.example" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.LoadServiceImplTest.Load">
+  <component name="RunManager" selected="JUnit.ControllerTest.loadAll">
+    <configuration name="ControllerTest.loadAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Binance" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example.controller" />
+      <option name="MAIN_CLASS_NAME" value="org.example.controller.ControllerTest" />
+      <option name="METHOD_NAME" value="loadAll" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ControllerTest.redisLoad" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Binance" />
       <extension name="coverage">
@@ -189,22 +185,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TransferServiceImplTest.batchTransferAndLoad" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Binance" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.example.service" />
-      <option name="MAIN_CLASS_NAME" value="org.example.service.TransferServiceImplTest" />
-      <option name="METHOD_NAME" value="batchTransferAndLoad" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="Binance" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.DemoApplication" />
@@ -214,11 +194,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ControllerTest.loadAll" />
         <item itemvalue="JUnit.LoadServiceImplTest.Load" />
         <item itemvalue="JUnit.RedisServiceImplTest.exists" />
         <item itemvalue="JUnit.RedisServiceImplTest.loadCalculateAndFetch" />
         <item itemvalue="JUnit.ControllerTest.redisLoad" />
-        <item itemvalue="JUnit.TransferServiceImplTest.batchTransferAndLoad" />
       </list>
     </recent_temporary>
   </component>
@@ -251,7 +231,7 @@
       <workItem from="1660108580654" duration="6554000" />
       <workItem from="1660264718353" duration="46217000" />
       <workItem from="1660884342836" duration="2563000" />
-      <workItem from="1660892119640" duration="2158000" />
+      <workItem from="1660892119640" duration="5654000" />
     </task>
     <task id="LOCAL-00001" summary="version1">
       <created>1658902378313</created>
@@ -281,7 +261,14 @@
       <option name="project" value="LOCAL" />
       <updated>1660264754537</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="8-19 jenkins test">
+      <created>1660895550102</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1660895550102</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -301,7 +288,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="version1" />
     <MESSAGE value="before ut" />
-    <option name="LAST_COMMIT_MESSAGE" value="before ut" />
+    <MESSAGE value="8-19 jenkins test" />
+    <option name="LAST_COMMIT_MESSAGE" value="8-19 jenkins test" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
