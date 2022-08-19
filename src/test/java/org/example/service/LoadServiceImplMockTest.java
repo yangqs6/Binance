@@ -5,38 +5,26 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.junit4.SpringRunner;
 
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
 class LoadServiceImplMockTest {
 
-    @Mock
+    @Autowired
     private LoadService loadService;
-
-    //@BeforeAll
-//    void setUp(){
-//        System.out.println("Start to test ========");
-//        MockitoAnnotations.openMocks(this);
-//    }
-
-
-
-
     //1523577600000/1523664000000
     @Test
     void Load() {
-        MockitoAnnotations.openMocks(this);
-        String loadId = "e2501050-5298-4bbf-a8e2-9308aef0449d";
-//        Assertions.assertEquals(loadService.load(MoneyType.valueOf("BTC"),1523577600000L,
-//                1523664000000L,loadId),loadId);
-        Mockito.when(loadService.load(MoneyType.valueOf("BTC"),
-                1523577600000L,1523577600000L,loadId)).thenReturn("0");
-        Assertions.assertEquals("0",loadService.load(MoneyType.valueOf("BTC"),
-                1523577600000L,1523577600000L,loadId));
-
-
     }
 
     @Test
@@ -56,8 +44,4 @@ class LoadServiceImplMockTest {
     }
 
 
-//    @AfterAll
-//    void printEnd(){
-//        System.out.println("End to test ========");
-//    }
 }

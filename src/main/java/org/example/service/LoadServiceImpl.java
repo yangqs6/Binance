@@ -32,22 +32,28 @@ public class LoadServiceImpl implements LoadService {
     private LoadMapper loadMapper;
 
     @Autowired
-    private RestTemplate restTemplate;
+    public RestTemplate restTemplate;
 
     @Autowired
     private TransferService transferService;
 
-
     @Autowired
     private RedisService redisService;
-
 
     @Autowired
     private CalculateService calculateService;
 
 
     @Value("${url}")
-    private String urlTemplate;
+    public String urlTemplate;
+
+    @Value("${number}")
+    public int number;
+
+    public int testNumber(){
+        System.out.println(number);
+        return number;
+    }
 
     public void batchLoad(List<RawKline> rawKlines) {
         loadMapper.load(rawKlines);
@@ -74,70 +80,39 @@ public class LoadServiceImpl implements LoadService {
             return loadId;
         }
         String url = String.format(urlTemplate, symbol, startTime, endTime);
+
         // get data from web
         ResponseEntity<String[][]> response = restTemplate.getForEntity(url, String[][].class);
-        String[][] result = response.getBody(); //500??? 这个是网页限制的访问么？
+        String[][] result = response.getBody();
         assert result != null;
         List<RawKline> rawKlines = Arrays.stream(result)
                 .map(part -> new RawKline(part, symbol, loadId))
                 .collect(Collectors.toList());
         loadMapper.load(rawKlines);
         transferService.batchTransferAndLoad(rawKlines);
-//        //TODO recursion -> for
         if(endTime - startTime >= (60 * 1000 * 500)) {
             load(symbol, startTime + (60 * 1000 * 500), endTime, loadId);
         }
-
         return loadId;
     }
 
     public List<Kline> loadRedis(String symbol, Long startTime, Long endTime, String loadId, int frequency) throws JsonProcessingException {
-        // load data with 5 10 15 frequency...
-
-        // if we have matched data in redis, stop
-        // if we don't have matched data in redis,
-        // first calculate , second load to redis
 
         Long t = System.currentTimeMillis();
         List<Kline> result;
         //exist key?
         if(redisService.exists(symbol,loadId,startTime,endTime,frequency)) {
-            // exist --> fetch
-            // no --> load
             result =redisService.fetchCalculate(symbol, loadId, startTime, endTime, frequency);
-        }
-       else{
+        }else{
+            System.out.println("Not exists");
            List<Kline> klines = calculateService.getKline(symbol,startTime,endTime,loadId);
            result = calculateService.calculate(klines,symbol,loadId,frequency);
            redisService.loadCalculate(result,symbol,loadId,startTime,endTime,frequency);
-           //public void loadCalculate(List<Kline> klines, String symbol, String loadId,Long startTime, Long endTime, int frequency) throws JsonProcessingException {
        }
-//        List<Kline> result2 = redisService.fetchCalculate(symbol, loadId, startTime, endTime, frequency);
-//        for(Kline k :result2){
-//            System.out.println(k);
-//        }
         System.out.println(System.currentTimeMillis()-t);
         return result;
     }
-
-    public int add(int a,int b){
-        System.out.println("running add");
-        return a + b;
-    }
-
-
 }
 
 
 
-//  TODO to a list of new object from previous step. YYYY-mm-dd iso hh:ii:ss ISO format
-
-// TODO unit test and integration test
-//  mock vs spy
-
-// TODO Calculate() -> List<Kline>(Not Trade) symbol, load id, start time , end time, frequency
-// 1 []
-// 2 []
-// 3 []
-// ...
-// 5 []

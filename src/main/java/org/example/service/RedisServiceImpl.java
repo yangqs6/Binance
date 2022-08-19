@@ -17,23 +17,6 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class RedisServiceImpl implements RedisService{
 
-    //把数据存放在redis里
-    //存放的数据就是List<Kline>
-
-
-    //User user = new User("胡歌",18);
-    //        //手动序列化
-    //        String json = mapper.writeValueAsString(user);
-    //        //写入一条数据到redis
-    //        stringRedisTemplate.opsForValue().set("user:200",json);
-    //        //读取数据
-    //        String val = stringRedisTemplate.opsForValue().get("user:200");
-    //        //反序列化
-    //        User user1 = mapper.readValue(val,User.class);
-    //        System.out.println("user1 = "+user1);
-
-    //查询的时候用啥查？ symbol loadid starttime endtime frequency
-
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
@@ -54,13 +37,8 @@ public class RedisServiceImpl implements RedisService{
 
         String key = getKey(symbol,loadId,startTime,endTime,frequency);
         //String val = stringRedisTemplate.opsForValue().get("user:200");
-        System.out.println(key);
-
-        System.out.println("=========================================================");
         String val = stringRedisTemplate.opsForValue().get(key);
-        System.out.println(val);
-        System.out.println("=========================================================");
-        //KlineList klineList = null;
+
         Kline[] klineList = null;
         try {
             klineList = mapper.readValue(val, Kline[].class);

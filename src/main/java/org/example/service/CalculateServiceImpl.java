@@ -22,14 +22,15 @@ public class CalculateServiceImpl implements CalculateService{
 
         int i = 0;
         List<Kline> result = new ArrayList<>();
-        while(i < klines.size()){
+        while(i + frequency - 1< klines.size()){
             Kline k = new Kline();
             k.setSymbol(symbol);
             k.setLoadId(loadId);
             k.setOpenTime(klines.get(i).getOpenTime());
             k.setCloseTime(klines.get(i+frequency-1).getCloseTime());
-            k.setOpen(klines.get(i).getOpen());
             k.setClose(klines.get(i+frequency-1).getClose());
+            k.setOpen(klines.get(i).getOpen());
+
 
             double maxValue = klines.get(i).getHigh();
             double minValue = klines.get(i).getLow();
@@ -58,7 +59,6 @@ public class CalculateServiceImpl implements CalculateService{
             result.add(k);
             i += frequency;
         }
-
         return result;
     }
 

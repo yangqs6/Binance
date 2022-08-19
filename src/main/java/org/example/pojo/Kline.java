@@ -8,6 +8,7 @@ import lombok.experimental.Accessors;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
+import java.util.function.Supplier;
 
 
 @Getter
@@ -16,6 +17,7 @@ import java.util.TimeZone;
 @NoArgsConstructor
 
 public class Kline {
+//public class Kline implements Supplier<String> {
 
     private String loadId;
     private String symbol;

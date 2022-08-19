@@ -22,5 +22,5 @@ public interface LoadService {
     //TODO
     List<Kline> loadRedis(String symbol, Long startTime, Long endTime, String loadId, int frequency) throws JsonProcessingException;
 
-    int add(int a, int b);
+
 }

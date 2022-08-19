@@ -10,5 +10,5 @@ public interface TransferService {
     List<Kline> batchTransferAndLoad(List<RawKline> rawKlines);
 
     //删除：
-    List<Kline> batchTransfer(List<RawKline> rawKlines);
+    //List<Kline> batchTransfer(List<RawKline> rawKlines);
 }

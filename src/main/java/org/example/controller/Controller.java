@@ -1,5 +1,7 @@
 package org.example.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import org.example.pojo.Kline;
 import org.example.pojo.MoneyType;
 import org.example.pojo.exception.InvalidSymbolException;
 import org.example.pojo.exception.InvalidTimeException;
@@ -10,7 +12,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -23,7 +27,7 @@ public class Controller {
     private LoadService loadService;
 
     //TODO follow load function
-    //http://localhost:8082/load/all/1523577600000/1523664000000/
+    //http://localhost:8082/load/all/1523577600000/1523664000000
     @GetMapping("/load/all/{startTime}/{endTime}")
     public void loadAll(@PathVariable Long startTime, @PathVariable Long endTime) {
 
@@ -41,7 +45,7 @@ public class Controller {
 
     }
 
-    //http://localhost:8082/load/BTC/1523577600000/1523664000000/
+    //http://localhost:8082/load/BTC/1523577600000/1523664000000
     @GetMapping("/load/{symbol}/{startTime}/{endTime}")
     public String load(@PathVariable String symbol, @PathVariable Long startTime, @PathVariable Long endTime, @RequestParam(value = "load_id", defaultValue = "") String loadId) {
         MoneyType m;
@@ -54,12 +58,15 @@ public class Controller {
             throw new InvalidTimeException(String.format("Invalid Time, endTime must greater than startTime, endTime=%s, startTime=%s", endTime, startTime));
         }
         loadId = loadId.isEmpty()?UUID.randomUUID().toString():loadId;
-        return loadService.load(m, startTime, endTime, loadId);
+
+        String r = loadService.load(m, startTime, endTime, loadId);
+        System.out.println(r);
+        return r;
     }
 
     //http://localhost:8082/getkline/BTC/1523577600000/152366400000/
     //http://localhost:8082/loadasyn/1523577600000/152366400000/
-    @GetMapping("/loadasyn/{startTime}/{endTime}/{loadId}")
+    @GetMapping("/loadasyn/{startTime}/{endTime}")
     public void loadAsyn(@PathVariable Long startTime,@PathVariable Long endTime,@RequestParam(value = "load_id", defaultValue = "") String loadId){
 
         long startPTime = new Date().getTime();
@@ -73,6 +80,13 @@ public class Controller {
         System.out.println("本程序运行 " + (endPTime - startPTime)
                 + " 毫秒完成。");
 
+    }
+
+
+    @GetMapping("/redisLoad/{symbol}/{startTime}/{endTime}/{loadId}/{frequency}")
+    public List<Kline> RedisLoad(@PathVariable String symbol, @PathVariable Long startTime, @PathVariable Long endTime, @PathVariable String loadId, @PathVariable int frequency) throws JsonProcessingException {
+        List<Kline> result = loadService.loadRedis(symbol,startTime,endTime,loadId,frequency);
+        return result;
     }
 
 

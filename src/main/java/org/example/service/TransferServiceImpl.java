@@ -26,12 +26,12 @@ public class TransferServiceImpl implements TransferService{
         return result;
     }
 
-    public List<Kline> batchTransfer(List<RawKline> rawKlines){
-        List<Kline> result = rawKlines.stream()
-                .map(Kline::new)
-                .collect(Collectors.toList());
-        return result;
-    }
-
+//    public List<Kline> batchTransfer(List<RawKline> rawKlines){
+//        List<Kline> result = rawKlines.stream()
+//                .map(Kline::new)
+//                .collect(Collectors.toList());
+//        return result;
+//    }
+//
 
 }

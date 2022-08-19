@@ -105,20 +105,21 @@ public class CalculatorController {
         String beginTime = jdf1.format(date2);
         List<Kline> klines = klineMapper.getKline(loadId,symbol,beginTime,closeTime);
         redisService.loadCalculate(klines,symbol,loadId,startTime,endTime,frequency);
-        List<Kline> result = redisService.fetchCalculate(symbol,loadId,startTime,endTime,frequency);
-        for(Kline k:result){
-            System.out.println(k);
-        }
+//        List<Kline> result = redisService.fetchCalculate(symbol,loadId,startTime,endTime,frequency);
+//        for(Kline k:result){
+//            System.out.println(k);
+//        }
     }
 
 
 
     //public void loadRedis(MoneyType m, Long startTime, Long endTime, String loadId, int frequency) throws JsonProcessingException {
     //http://localhost:8082/redisLoad/BTC/1523577600000/1523664000000/e2501050-5298-4bbf-a8e2-9308aef0449c/5
-    @GetMapping("/redisLoad/{symbol}/{startTime}/{endTime}/{loadId}/{frequency}")
-    public List<Kline> RedisLoad(@PathVariable String symbol,@PathVariable Long startTime, @PathVariable Long endTime, @PathVariable String loadId, @PathVariable int frequency) throws JsonProcessingException {
-        return loadService.loadRedis(symbol,startTime,endTime,loadId,frequency);
-    }
+//    @GetMapping("/redisLoad/{symbol}/{startTime}/{endTime}/{loadId}/{frequency}")
+//    public List<Kline> RedisLoad(@PathVariable String symbol,@PathVariable Long startTime, @PathVariable Long endTime, @PathVariable String loadId, @PathVariable int frequency) throws JsonProcessingException {
+//        List<Kline> result = loadService.loadRedis(symbol,startTime,endTime,loadId,frequency);
+//        return result;
+//    }
 }
 
 
